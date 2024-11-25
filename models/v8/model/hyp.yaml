@@ -1,0 +1,12 @@
+rot90: False
+degrees: 90
+translate: 0.2
+scale: 0.9
+shear: 10
+perspective: 0
+albumentations: 0.5
+hsv_h: 0.9 
+hsv_s: 0.4
+hsv_v: 0.5
+flipud: 0.5
+fliplr: 0.5
