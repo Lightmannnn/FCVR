@@ -176,10 +176,10 @@ class FCVR(nn.Module):
             rec_bchw = self.unpatchify(rec * var + mean)
             rec_or_inp = torch.where(active_b1hw, inp_bchw_b1, rec_bchw)
             import cv2
-            # cv2.imencode('.jpg', inp_bchw_b1[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR_code\visual_img\0.bmp')
-            # cv2.imencode('.jpg', masked_bchw[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR_code\visual_img\1.bmp')
-            # cv2.imencode('.jpg', rec_bchw[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR_code\visual_img\2.bmp')
-            # cv2.imencode('.jpg', rec_or_inp[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR_code\visual_img\3.bmp')
+            cv2.imencode('.jpg', inp_bchw_b1[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR\visual_img\0.bmp')
+            cv2.imencode('.jpg', masked_bchw[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR\visual_img\1.bmp')
+            cv2.imencode('.jpg', rec_bchw[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR\visual_img\2.bmp')
+            cv2.imencode('.jpg', rec_or_inp[0].permute(1,2,0).detach().cpu().numpy() * 255)[1].tofile(r'D:\论文\我的论文\MAE\FCVR\visual_img\3.bmp')
             return recon_loss + 0.25 * contrastive_loss, inp_bchw_b1, masked_bchw, rec_or_inp
     
     def patchify(self, bchw):

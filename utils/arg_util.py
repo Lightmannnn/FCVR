@@ -15,23 +15,23 @@ import dist
 
 class Args(Tap):
     # environment
-    exp_name: str = 'exp/kth-exp'
-    exp_dir: str = 'exp/kth-exp'   # will be created if not exists
-    data_path: list = [r'/mnt/lhg/PTtrain/']
-    init_weight: str = r''   # use some checkpoint as model weight initialization; ONLY load model weights
+    exp_name: str = 'exp/d2s'
+    exp_dir: str = 'exp/d2s'   # will be created if not exists
+    data_path: list = [r'D:\Datasets\d2s-segment\yolo-style\images\train']
+    init_weight: str = r"E:\exp\d2s-resnet\resnet34_withdecoder_1kpretrained_spark_style.pth"  # use some checkpoint as model weight initialization; ONLY load model weights
     resume_from: str = r''   # resume the experiment from some checkpoint.pth; load model weights, optimizer states, and last epoch
     hyp: str = r'models/v8/model/hyp.yaml'
     # FCVR hyperparameters
     mask: float = 0.6   # mask ratio, should be in (0, 1)
     
     # encoder hyperparameters
-    model: str = 'yolo'
-    input_size: int = 224
+    model: str = 'resnet34'
+    input_size: int = 640
     sbn: bool = True
     
     # data hyperparameters
     bs: int = 1
-    dataloader_workers: int = 8
+    dataloader_workers: int = 0
     
     # pre-training hyperparameters
     dp: float = 0.0

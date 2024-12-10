@@ -55,7 +55,7 @@ def main_pt():
     print(f'[dataloader] gbs={args.glb_batch_size}, lbs={args.batch_size_per_gpu}, iters_train={iters_train}')
     
     # build encoder and decoder
-    sparse_enc, momentum_enc = build_encoder(args.model, input_size=args.input_size, sbn=args.sbn, drop_path_rate=args.dp, verbose=False)
+    momentum_enc, sparse_enc  = build_encoder(args.model, input_size=args.input_size, sbn=args.sbn, drop_path_rate=args.dp, verbose=False)
     feature_dec = FeatureDecoder(len(sparse_enc.enc_feat_map_chs), sbn=args.sbn)
     pixel_dec = PixelDecoder(sparse_enc.downsample_raito, sbn=args.sbn)
     momentum_enc = MomentumEncoder(momentum_enc, feature_dec, sbn=args.sbn, verbose=False)

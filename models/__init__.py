@@ -12,6 +12,7 @@ from timm.models.layers import drop
 
 from models.resnet import ResNet
 from models.init_yolo import YOLO
+from copy import deepcopy
 _import_resnets_for_timm_registration = (ResNet,)
 
 
@@ -57,5 +58,5 @@ def build_encoder(name: str, input_size: int, sbn=False, drop_path_rate=0.0, ver
         kwargs['drop_path_rate'] = drop_path_rate
     print(f'[build_sparse_encoder] model kwargs={kwargs}')
     cnn = create_model(name, **kwargs)
-    return SparseEncoder(cnn, input_size=input_size, sbn=sbn, verbose=verbose), cnn
+    return deepcopy(cnn), SparseEncoder(cnn, input_size=input_size, sbn=sbn, verbose=verbose)
 
